@@ -54,9 +54,11 @@ Stream.prototype.hexDump = function (start, end, raw) {
     for (var i = start; i < end; ++i) {
         s += this.hexByte(this.get(i));
         if (raw !== true)
-            switch (i & 0xF) {
-            case 0x7: s += "  "; break;
-            case 0xF: s += "\n"; break;
+            switch (i & 0x1F) {
+            case 0x07: s += "  "; break;
+            case 0x0F: s += "  "; break;
+            case 0x17: s += "  "; break;
+            case 0x1F: s += "\n"; break;
             default:  s += " ";
             }
     }
